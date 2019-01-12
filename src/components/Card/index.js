@@ -25,10 +25,11 @@ class Card extends React.Component {
 
   render() {
     const { name, imageUrl, hp = 0, attacks = [], weaknesses = [], full = false, id } = this.props;
-    const calHpValue = (_.isNumber(hp) ) ? _.clamp(hp, 0, 100) : 0;
+    
+    const calHpValue = _.isNaN(Number(hp)) ? 0 : _.clamp(hp, 0, 100);
     const calStrValue = (attacks.length > 0 && attacks.length <= 2) ? attacks.length * 50 : 0;
     const calWeakValue = (weaknesses.length === 1) ? 100 : 0;
-    console.log('calHpValue', id, calHpValue);
+    console.log('calHpValue', id, calHpValue, hp);
     console.log('calStrValue', id, calStrValue);
     console.log('calWeakValue', id, calWeakValue);
     return (
