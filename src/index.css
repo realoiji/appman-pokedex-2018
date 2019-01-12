@@ -8,12 +8,14 @@ body {
 #root {
   width: 1024px;
   height: 768px;
-  margin: 50px auto;
+  /* margin: 50px auto; */
   border-color: #353535;
   border-radius: 40px;
   border-width: 28px 103px 28px 74px;
   border-style: solid;
   position: relative;
+  box-sizing: border-box;
+  overflow: scroll;
 }
 
 #root:before {

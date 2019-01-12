@@ -1,5 +1,10 @@
-import React, { Component } from 'react'
-import './App.css'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { initApp } from './actions/action';
+
+import { MyDex, ListPopup } from './components';
+import './App.css';
 
 const COLORS = {
   Psychic: "#f8a5c2",
@@ -16,12 +21,25 @@ const COLORS = {
 }
 
 class App extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    // initApp();
+    dispatch(initApp());
+  }
   render() {
     return (
       <div className="App">
+        <MyDex />
+        <ListPopup />
       </div>
     )
   }
 }
 
-export default App
+const mapStateToProps = ({ cards }) => {
+  return {
+    cards
+  };
+};
+
+export default connect(mapStateToProps)(App);
