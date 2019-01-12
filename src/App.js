@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from '@emotion/styled';
 
 import { initApp } from './actions/action';
 
 import { MyDex, ListPopup } from './components';
-import './App.css';
-
-const COLORS = {
-  Psychic: "#f8a5c2",
-  Fighting: "#f0932b",
-  Fairy: "#c44569",
-  Normal: "#f6e58d",
-  Grass: "#badc58",
-  Metal: "#95afc0",
-  Water: "#3dc1d3",
-  Lightning: "#f9ca24",
-  Darkness: "#574b90",
-  Colorless: "#FFF",
-  Fire: "#eb4d4b"
-}
+import Colors from './utils/colors';
 
 class App extends Component {
+  state = {
+    isShow: true
+  }
   componentDidMount() {
     const { dispatch } = this.props;
     // initApp();
     dispatch(initApp());
   }
+  handleOpenPopup = () => {
+    this.setState({ isShow: true });
+  }
+  handleClosePopup = () => {
+    this.setState({ isShow: false });
+  }
   render() {
+    const { isShow } = this.state;
     return (
-      <div className="App">
+      <AppContainer>
         <MyDex />
-        <ListPopup />
-      </div>
+        <div className="footer">
+          <button onClick={this.handleOpenPopup}><i className="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
+        <ListPopup show={isShow} onClose={this.handleClosePopup} />
+      </AppContainer>
     )
   }
 }
@@ -43,3 +43,31 @@ const mapStateToProps = ({ cards }) => {
 };
 
 export default connect(mapStateToProps)(App);
+
+const AppContainer = styled.div`
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: ${Colors.bottomBarBackground};
+    text-align: center;
+    button {
+      transform: translateY(-32%);
+      background-color: ${Colors.bottomBarBackground};
+      color: white;
+      border-radius: 50%;
+      border: 0;
+      width: 150px;
+      height: 150px;
+      font-size: 100px;
+      font-weight: bold;
+      outline: none;
+      font-family: Atma;
+    }
+  }
+`;

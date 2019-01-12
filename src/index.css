@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  /*font-family: sans-serif;*/
   font-family: 'Atma', cursive;
 }
 
@@ -15,7 +14,6 @@ body {
   border-style: solid;
   position: relative;
   box-sizing: border-box;
-  overflow: scroll;
 }
 
 #root:before {

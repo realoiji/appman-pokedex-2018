@@ -58,6 +58,9 @@ const Container = styled.div`
     overflow: scroll;
     display: flex;
     flex-wrap: wrap;
+    padding: 10px;
+    box-sizing: border-box;
+    height: calc(100vh - 28px - 60px - 120px);
   }
   .card-item {
 
