@@ -24,10 +24,13 @@ class Card extends React.Component {
   }
 
   render() {
-    const { name, imageUrl, hp, attacks = [], weaknesses = [], full = false, id } = this.props;
-    const calHpValue = _.clamp(hp, 0, 100);
+    const { name, imageUrl, hp = 0, attacks = [], weaknesses = [], full = false, id } = this.props;
+    const calHpValue = (_.isNumber(hp) ) ? _.clamp(hp, 0, 100) : 0;
     const calStrValue = (attacks.length > 0 && attacks.length <= 2) ? attacks.length * 50 : 0;
     const calWeakValue = (weaknesses.length === 1) ? 100 : 0;
+    console.log('calHpValue', id, calHpValue);
+    console.log('calStrValue', id, calStrValue);
+    console.log('calWeakValue', id, calWeakValue);
     return (
       <Container className={(full) ? 'full' : ''}>
         <div className="card-wrap-image">
@@ -41,7 +44,7 @@ class Card extends React.Component {
         </div>
         <div className="card-wrap-control">
           { !full && (
-            <div onClick={this.handleAddCardToMyDex}>
+            <div onClick={this.handleRemoveCardFromMyDex}>
               x
             </div>
           )}
