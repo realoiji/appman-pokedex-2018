@@ -9,7 +9,7 @@ class Card extends React.Component {
     return (
       <div className="gauge-wrap">
         <label htmlFor="">{title}</label>
-        <input type="range" name={key} min={min} max={max} value={value} />
+        <Gauge value={value}/>
       </div>
     );
   }
@@ -30,15 +30,20 @@ class Card extends React.Component {
     const calHpValue = _.isNaN(Number(hp)) ? 0 : _.clamp(hp, 0, 100);
     const calStrValue = (attacks.length > 0 && attacks.length <= 2) ? attacks.length * 50 : 0;
     const calWeakValue = (weaknesses.length === 1) ? 100 : 0;
-    const calDamageValue = _.reduce(attacks, (result, { damage }) => result += damage ? parseInt(damage) : 0, 0);
+    // console.log('weaknesses', weaknesses);
+    const calDamageValue = _.reduce(attacks, (result, { damage }) => {
+      // console.log('damage', damage);
+      return result += damage ? parseInt(damage) : 0
+    }, 0);
+
     const calHappinessValue = ((calHpValue / 10) + (calDamageValue /10 ) + 10 - (calWeakValue)) / 5;
     // console.log('calHpValue', id, calHpValue, hp);
     // console.log('calStrValue', id, calStrValue);
     // console.log('calWeakValue', id, calWeakValue);
     // console.log('calDamageValue', id, calDamageValue);
     // console.log('calHappinessValue', id, calHappinessValue);
-    console.log('cal level : ', id, calHpValue, calStrValue, calDamageValue, calWeakValue, calHappinessValue);
-    console.log('-------');
+    // console.log('cal level : ', id, calHpValue, calDamageValue, calWeakValue, calHappinessValue);
+    // console.log('-------');
     return (
       <Container className={(full) ? 'full' : ''}>
         <div className="card-wrap-image">
@@ -126,5 +131,24 @@ const Container = styled.div`
       opacity: 1;
       visibility: visible;
     }
+  }
+`;
+
+const Gauge = styled.div`
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background-color: ${Colors.levelTubeBackground};
+  border-radius: 30px;
+  box-shadow: inset 0 0 1px ${Colors.levelTubeBoxShadow};
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: ${({ value }) => _.clamp(value, 0, 100)}%;
+    background-color: ${Colors.levelTubeValueBackground};
+    border-radius: 30px;
   }
 `;

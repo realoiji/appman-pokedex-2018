@@ -1,15 +1,18 @@
 const colors = {
-  colorAddButton: "#dc7777",
-  cardBackground: "#f3f4f7",
   cardBoxShadow: "#d5d6dc",
   cardBoxShadowHover: "#aeaeae",
+  cardBackground: "#f3f4f7",
+  colorAddButton: "#dc7777",
+  levelTubeBackground: "#e4e4e4",
+  levelTubeBoxShadow: "#d4d4d4",
+  levelTubeValueBackground: "#f3701a",
   bottomBarBackground: "#ec5656",
-  Metal: "#95afc0",
-  Water: "#3dc1d3",
-  Lightning: "#f9ca24",
-  Darkness: "#574b90",
-  Colorless: "#FFF",
-  Fire: "#eb4d4b"
+  bottomBarBoxShadow: "#933387",
+  bottomBarTextColor: "#ffffff",
+  modalOutside: "#0000a3",
+  modalContentBoxShadow: "#474444",
+  modalCotentBackground: "#ffffff",
+  searchBoxBorder: "#e6e6e6"
 };
 
 export default colors;

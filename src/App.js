@@ -56,10 +56,11 @@ const AppContainer = styled.div`
     height: 100px;
     background-color: ${Colors.bottomBarBackground};
     text-align: center;
+    box-shadow: inset 0 0 1px ${Colors.bottomBarBoxShadow};
     button {
-      transform: translateY(-32%);
+      transform: translateY(-40%);
       background-color: ${Colors.bottomBarBackground};
-      color: white;
+      color: ${Colors.bottomBarTextColor};
       border-radius: 50%;
       border: 0;
       width: 150px;

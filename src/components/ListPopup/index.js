@@ -47,12 +47,7 @@ class ListPopup extends React.Component {
       ]
     };
     const cardlists = _.differenceBy(cards, myDex, 'id');
-    console.log('cards', cards);
-    console.log('myDex', myDex);
-    console.log('cardlists', cardlists);
     const fuse = new Fuse(cardlists, options);
-    // console.log('cards', cards);
-    // console.log('searchValue', searchValue);
     const searchResults = (searchValue) ? fuse.search(searchValue) : cardlists;
 
     return (
@@ -106,7 +101,7 @@ const Container = styled.div`
     bottom: 0;
   }
   .list-popup-wrapper {
-    background-color: white;
+    background-color: ${Colors.modalCotentBackground};
     position: absolute;
     top: 40px;
     left: 40px;
@@ -129,6 +124,7 @@ const Container = styled.div`
       font-size: 24px;
       margin: 10px auto;
       display: block;
+      border: 2px solid ${Colors.searchBoxBorder};
     }
     i {
       position: absolute;
