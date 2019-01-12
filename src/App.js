@@ -9,7 +9,7 @@ import Colors from './utils/colors';
 
 class App extends Component {
   state = {
-    isShow: true
+    isShow: false
   }
   componentDidMount() {
     const { dispatch } = this.props;
@@ -28,7 +28,7 @@ class App extends Component {
       <AppContainer>
         <MyDex />
         <div className="footer">
-          <button onClick={this.handleOpenPopup}><i className="fa fa-plus" aria-hidden="true"></i></button>
+          <button onClick={this.handleOpenPopup}>+</button>
         </div>
         <ListPopup show={isShow} onClose={this.handleClosePopup} />
       </AppContainer>
@@ -67,7 +67,7 @@ const AppContainer = styled.div`
       font-size: 100px;
       font-weight: bold;
       outline: none;
-      font-family: Atma;
+      font-family: 'Atma';
     }
   }
 `;
