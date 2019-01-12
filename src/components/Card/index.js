@@ -71,10 +71,13 @@ const Container = styled.div`
     flex-basis: 100%;
   }
   .card-wrap-image {
-
+    flex-basis: 50%;
+    img {
+      max-width: 100%;
+    }
   }
   .card-wrap-detail {
-
+    flex-basis: 50%;
   }
   .card-name {
 

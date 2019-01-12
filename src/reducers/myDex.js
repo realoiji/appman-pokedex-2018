@@ -9,14 +9,12 @@ export default (state = initialState, action) => {
     case ActionType.GET_MYDEX:
       return [];
     case ActionType.ADD_TO_MY_DEX:
-    console.log('ADD_TO_MY_DEX')
       return [
         ...state,
         action.data,
       ];
     case ActionType.REMOVE_FROM_MY_DEX:
-      console.log('REMOVE_FROM_MY_DEX')
-      return _.filter(state, { id: action.data })
+      return _.reject(state, { id: action.data })
     default:
       return state;
   }

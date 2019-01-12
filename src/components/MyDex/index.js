@@ -57,6 +57,7 @@ const Container = styled.div`
   .card-container {
     overflow: scroll;
     display: flex;
+    flex-wrap: wrap;
   }
   .card-item {
 
